@@ -76,11 +76,11 @@ function checkconv = (
 fn convertVRPtoCP obj =	(
 	if classof obj==vrayproxy then (
 		ExpNorm = if cbExpNorm.checked then 1 else 0
-		WeldVerts = if cbWeldVerts.checked then 1 else 0
-		mmesh = vrayMeshImport proxy:obj explicitNormals:ExpNorm  weldVertices:WeldVerts
+		WeldVerts = if cbWeldVerts.checked then 1 else 0		
+		mmesh = vrayMeshImport proxy:obj explicitNormals:ExpNorm  weldVertices:WeldVerts		
 		cfilename = (if outdir==undefined then getfilenamepath obj.filename else outdir)+ "\\" + getfilenamefile obj.filename + ".cbin"
 		cproxy = CoronaProxy cacheInRam:cbcache.checked previzType:(ddlPreviz.selection-1) displayVertexFraction:spnPCD.value
-		CoronaProxy.ProxyFp.fromScene cproxy mmesh[1] cfilename		
+		CoronaProxy.ProxyFp.fromScene cproxy mmesh[1] cfilename	
 		delete mmesh
 		cproxy
 		)	
@@ -95,7 +95,9 @@ fn convertScene = (
 				newmat = createCoronaMtl o.material			
 				cpr.material = newmat
 			)
+			sca = o.proxy_scale				
 			replaceInstances o cpr
+			for p in instances do scale p [sca,sca,sca]
 			delete cpr
 			)
 	)
