@@ -78,8 +78,8 @@ fn convertVRPtoCP obj =	(
 		ExpNorm = if cbExpNorm.checked then 1 else 0
 		WeldVerts = if cbWeldVerts.checked then 1 else 0		
 		mmesh = vrayMeshImport proxy:obj explicitNormals:ExpNorm  weldVertices:WeldVerts		
-		cfilename = (if outdir==undefined then getfilenamepath obj.filename else outdir)+ "\\" + getfilenamefile obj.filename + ".cbin"
-		cproxy = CoronaProxy cacheInRam:cbcache.checked previzType:(ddlPreviz.selection-1) displayVertexFraction:spnPCD.value
+		cfilename = (if outdir==undefined then getfilenamepath obj.filename else outdir)+ "\\" + getfilenamefile obj.filename + ".cproxy"
+		cproxy = CoronaProxy cacheInRam:cbcache.checked previzType:(ddlPreviz.selection-1) pointcloudDensity:spnPCD.value
 		CoronaProxy.ProxyFp.fromScene cproxy mmesh[1] cfilename	
 		delete mmesh
 		cproxy
