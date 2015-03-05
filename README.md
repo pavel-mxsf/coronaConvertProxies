@@ -12,6 +12,7 @@ For automatic material conversion run and close Advanced Corona Material Convert
 
 31. 3. 2014 - vrayproxy scale property is applied to corona proxy node scale now.
 1. 7. 2014 - updated for corona alpha 7
+5. 3. 2015 - updated for corona 1.0
 
 ## TODO
 
