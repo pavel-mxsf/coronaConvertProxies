@@ -1,9 +1,9 @@
 /* 
-Version: v0.02
+Version: v1.00 for corona 1.0 final
 Written by Pavel Vojacek
 codepoint.eu
 license MIT
-Copyright (c) 2014 Pavel Vojacek
+Copyright (c) 2015 Pavel Vojacek
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
@@ -79,10 +79,10 @@ fn convertVRPtoCP obj =	(
 		WeldVerts = if cbWeldVerts.checked then 1 else 0		
 		mmesh = vrayMeshImport proxy:obj explicitNormals:ExpNorm  weldVertices:WeldVerts		
 		cfilename = (if outdir==undefined then getfilenamepath obj.filename else outdir)+ "\\" + getfilenamefile obj.filename + ".cproxy"
-		cproxy = CoronaProxy cacheInRam:cbcache.checked previzType:(ddlPreviz.selection-1) pointcloudDensity:spnPCD.value
-		CoronaProxy.ProxyFp.fromScene cproxy mmesh[1] cfilename	
+		cprx = CProxy cacheInRam:cbcache.checked previzType:(ddlPreviz.selection-1) pointcloudDensity:spnPCD.value
+		CProxy.ProxyFp.fromScene cprx mmesh[1] cfilename	
 		delete mmesh
-		cproxy
+		cprx
 		)	
 	)
 	
